@@ -991,106 +991,398 @@ class _HomeScreenState extends State<HomeScreen> {
               return _buildErrorWidget('User not found');
             }
 
+            // return ListView(
+            //   padding: EdgeInsets.zero,
+            //   children: [
+            //     UserAccountsDrawerHeader(
+            //       accountName: Text(
+            //         user.name ?? 'Guest User',
+            //         style: const TextStyle(
+            //           color: Colors.white,
+            //           fontSize: 18,
+            //           fontWeight: FontWeight.bold,
+            //           fontFamily: 'Calibri',
+            //         ),
+            //       ),
+            //       accountEmail: Text(
+            //         'Update profile',
+            //         style: const TextStyle(
+            //           color: Colors.blueAccent,
+            //           fontSize: 14,
+            //           decoration: TextDecoration.underline,
+            //         ),
+            //       ),
+            //       currentAccountPicture: CircleAvatar(
+            //         radius: 30,
+            //         backgroundColor: Colors.transparent,
+            //         child: ClipOval(
+            //           child: CachedNetworkImage(
+            //             imageUrl: (user.image ?? '').trim(),
+            //             width: 60,
+            //             height: 60,
+            //             fit: BoxFit.cover,
+            //             placeholder: (context, url) => Container(
+            //               color: Colors.green.withOpacity(0.2),
+            //               child: const CircularProgressIndicator(
+            //                 strokeWidth: 2,
+            //                 color: Colors.white,
+            //               ),
+            //             ),
+            //             errorWidget: (context, url, error) => Container(
+            //               color: Colors.green.withOpacity(0.2),
+            //               child: const Icon(
+            //                 Icons.person,
+            //                 size: 50,
+            //                 color: Colors.white,
+            //               ),
+            //             ),
+            //           ),
+            //         ),
+            //       ),
+            //       decoration: const BoxDecoration(
+            //         gradient: LinearGradient(
+            //           colors: [Color(0xFF2196F3), Color(0xFF1E88E5)],
+            //           begin: Alignment.topCenter,
+            //           end: Alignment.bottomCenter,
+            //         ),
+            //       ),
+            //       onDetailsPressed: () {
+            //         Navigator.push(
+            //           context,
+            //           MaterialPageRoute(builder: (context) => LogoutScreen()),
+            //         );
+            //       },
+            //     ),
+            //     // Padding(
+            //     //   padding: const EdgeInsets.symmetric(
+            //     //     horizontal: 16,
+            //     //     vertical: 8,
+            //     //   ),
+            //     //   child: Row(
+            //     //     children: [
+            //     //       const Icon(
+            //     //         Icons.visibility,
+            //     //         color: Colors.white,
+            //     //         size: 18,
+            //     //       ),
+            //     //       const SizedBox(width: 8),
+            //     //       const Text(
+            //     //         'Actively searching conferences',
+            //     //         style: TextStyle(color: Colors.white, fontSize: 14),
+            //     //       ),
+            //     //       const Spacer(),
+            //     //       IconButton(
+            //     //         icon: const Icon(Icons.edit, color: Colors.blueAccent),
+            //     //         onPressed: () {
+            //     //           Navigator.pop(context); // Close drawer first
+            //     //           Navigator.push(
+            //     //             context,
+            //     //             MaterialPageRoute(
+            //     //               builder: (context) => EditStatusScreen(
+            //     //                 currentStatus: 'Actively searching conferences',
+            //     //               ),
+            //     //             ),
+            //     //           );
+            //     //         },
+            //     //         tooltip: 'Edit status',
+            //     //       ),
+            //     //     ],
+            //     //   ),
+            //     // ),
+            //     // const Divider(color: Colors.grey, thickness: 1),
+            //     // Conference-specific drawer items with navigation
+            //     _buildDrawerItem(
+            //       Icons.search,
+            //       'Search Conferences',
+            //       onTap: () => Navigator.push(
+            //         context,
+            //         MaterialPageRoute(
+            //           builder: (context) => LiveEngagementScreen(),
+            //         ),
+            //       ),
+            //     ),
+            //     const Divider(color: Colors.grey, thickness: 1),
+            //     _buildDrawerItem(
+            //       Icons.calendar_today,
+            //       'Upcoming Conferences',
+            //       onTap: () => Navigator.push(
+            //         context,
+            //         MaterialPageRoute(
+            //           builder: (context) => LiveEngagementScreen(),
+            //         ),
+            //       ),
+            //     ),
+            //     _buildDrawerItem(
+            //       Icons.bookmark,
+            //       'Saved Conferences',
+            //       onTap: () => Navigator.push(
+            //         context,
+            //         MaterialPageRoute(builder: (context) => AgendaScreen()),
+            //       ),
+            //     ),
+            //     _buildDrawerItem(
+            //       Icons.bar_chart,
+            //       'Conference Interests',
+            //       onTap: () => Navigator.push(
+            //         context,
+            //         MaterialPageRoute(builder: (context) => AssessmentScreen()),
+            //       ),
+            //     ),
+            //     const Divider(color: Colors.grey, thickness: 1),
+            //     _buildDrawerItem(
+            //       Icons.visibility,
+            //       'Display preferences',
+            //       onTap: () => Navigator.push(
+            //         context,
+            //         MaterialPageRoute(builder: (context) => SessionsScreen()),
+            //       ),
+            //     ),
+            //     _buildDrawerItem(
+            //       Icons.chat,
+            //       'Conference Support (New)',
+            //       textColor: Colors.redAccent,
+            //       onTap: () => Navigator.push(
+            //         context,
+            //         MaterialPageRoute(
+            //           builder: (context) => LiveEngagementScreen(),
+            //         ),
+            //       ),
+            //     ),
+            //     _buildDrawerItem(
+            //       Icons.settings,
+            //       'Map',
+            //       onTap: () => Navigator.push(
+            //         context,
+            //         MaterialPageRoute(builder: (context) => MapScreen()),
+            //       ),
+            //     ),
+            //     _buildDrawerItem(
+            //       Icons.credit_card,
+            //       'Premium Conference Access',
+            //       onTap: () => Navigator.push(
+            //         context,
+            //         MaterialPageRoute(builder: (context) => AssessmentScreen()),
+            //       ),
+            //     ),
+            //     _buildDrawerItem(
+            //       Icons.menu_book,
+            //       'Conference News',
+            //       onTap: () => Navigator.push(
+            //         context,
+            //         MaterialPageRoute(builder: (context) => AssessmentScreen()),
+            //       ),
+            //     ),
+            //     _buildDrawerItem(
+            //       Icons.people,
+            //       'Speakers & Guests',
+            //       onTap: () => Navigator.push(
+            //         context,
+            //         MaterialPageRoute(builder: (context) => SessionsScreen()),
+            //       ),
+            //     ),
+            //     _buildDrawerItem(
+            //       Icons.map,
+            //       'Venue Information',
+            //       onTap: () => Navigator.push(
+            //         context,
+            //         MaterialPageRoute(builder: (context) => VenueScreen()),
+            //       ),
+            //     ),
+            //     _buildDrawerItem(
+            //       Icons.schedule,
+            //       'Conference Schedule',
+            //       onTap: () => Navigator.push(
+            //         context,
+            //         MaterialPageRoute(builder: (context) => ScheduleScreen()),
+            //       ),
+            //     ),
+            //     _buildDrawerItem(
+            //       Icons.schedule,
+            //       'About Us',
+            //       onTap: () => Navigator.push(
+            //         context,
+            //         MaterialPageRoute(builder: (context) => ContactUsScreen()),
+            //       ),
+            //     ),
+            //     const Padding(
+            //       padding: EdgeInsets.only(
+            //         left: 16,
+            //         right: 16,
+            //         top: 16,
+            //         bottom: 8,
+            //       ),
+            //       child: Text(
+            //         'Version 20.57',
+            //         style: TextStyle(color: Colors.grey, fontSize: 12),
+            //       ),
+            //     ),
+            //     //=============================logout option=========================
+            //     const Divider(color: Colors.grey, thickness: 1),
+
+            //     // _buildDrawerItem(
+            //     //   Icons.exit_to_app,
+            //     //   'Logout',
+            //     //   textColor: Colors.redAccent,
+            //     //   onTap: () {
+            //     //     Navigator.pop(context); // Close drawer
+            //     //     _showLogoutConfirmationDialog(context);
+            //     //   },
+            //     // ),
+            //     _buildDrawerItem(
+            //       Icons.person_outline,
+            //       'Profile',
+            //       onTap: () => Navigator.push(
+            //         context,
+            //         MaterialPageRoute(builder: (context) => LogoutScreen()),
+            //       ),
+            //     ),
+            //     const Padding(
+            //       padding: EdgeInsets.only(
+            //         left: 16,
+            //         right: 16,
+            //         top: 16,
+            //         bottom: 8,
+            //       ),
+            //       child: Text(
+            //         'Version 20.57',
+            //         style: TextStyle(color: Colors.grey, fontSize: 12),
+            //       ),
+            //     ),
+            //   ],
+            // );
+
             return ListView(
               padding: EdgeInsets.zero,
               children: [
-                UserAccountsDrawerHeader(
-                  accountName: Text(
-                    user.name ?? 'Guest User',
-                    style: const TextStyle(
-                      color: Colors.white,
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
-                      fontFamily: 'Calibri',
-                    ),
-                  ),
-                  accountEmail: Text(
-                    'Update profile',
-                    style: const TextStyle(
-                      color: Colors.blueAccent,
-                      fontSize: 14,
-                      decoration: TextDecoration.underline,
-                    ),
-                  ),
-                  currentAccountPicture: CircleAvatar(
-                    radius: 30,
-                    backgroundColor: Colors.transparent,
-                    child: ClipOval(
-                      child: CachedNetworkImage(
-                        imageUrl: (user.image ?? '').trim(),
-                        width: 60,
-                        height: 60,
-                        fit: BoxFit.cover,
-                        placeholder: (context, url) => Container(
-                          color: Colors.green.withOpacity(0.2),
-                          child: const CircularProgressIndicator(
-                            strokeWidth: 2,
-                            color: Colors.white,
-                          ),
-                        ),
-                        errorWidget: (context, url, error) => Container(
-                          color: Colors.green.withOpacity(0.2),
-                          child: const Icon(
-                            Icons.person,
-                            size: 50,
-                            color: Colors.white,
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
+                // Custom Horizontal Header
+                DrawerHeader(
+                  margin: EdgeInsets.zero,
+                  padding: const EdgeInsets.fromLTRB(12, 8, 12, 8),
                   decoration: const BoxDecoration(
                     gradient: LinearGradient(
-                      colors: [Color(0xFF2196F3), Color(0xFF1E88E5)],
+                      colors: [
+                        Color.fromARGB(255, 210, 143, 184),
+                        Color.fromARGB(255, 102, 140, 173),
+                      ],
                       begin: Alignment.topCenter,
                       end: Alignment.bottomCenter,
                     ),
                   ),
-                  onDetailsPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => LogoutScreen()),
-                    );
-                  },
+                  child: Row(
+                    children: [
+                      // Profile Picture with White Circle Background and Border
+                      Container(
+                        padding: const EdgeInsets.all(2),
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          color: Colors.white,
+                          border: Border.all(color: Colors.white, width: 1.5),
+                          boxShadow: [
+                            BoxShadow(
+                              blurRadius: 3,
+                              color: Colors.black.withOpacity(0.15),
+                            ),
+                          ],
+                        ),
+                        child: CircleAvatar(
+                          radius: 28,
+                          backgroundColor: Colors.transparent,
+                          child: ClipOval(
+                            child: CachedNetworkImage(
+                              imageUrl: (user.image ?? '').trim(),
+                              width: 56,
+                              height: 56,
+                              fit: BoxFit.cover,
+                              placeholder: (context, url) => Container(
+                                color: Colors.green.withOpacity(0.2),
+                                child: const CircularProgressIndicator(
+                                  strokeWidth: 2,
+                                  color: Colors.white,
+                                ),
+                              ),
+                              errorWidget: (context, url, error) => Container(
+                                color: Colors.green.withOpacity(0.2),
+                                child: const Icon(
+                                  Icons.person,
+                                  size: 40,
+                                  color: Colors.white,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+
+                      const SizedBox(width: 12),
+
+                      // Name and Update Profile
+                      Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              user.name ?? 'Guest User',
+                              style: const TextStyle(
+                                color: Colors.white,
+                                fontSize: 18,
+                                fontWeight: FontWeight.bold,
+                                fontFamily: 'Calibri',
+                              ),
+                            ),
+                            // Text(
+                            //   "+91${user.phone}" ?? 'Guest User',
+                            //   style: const TextStyle(
+                            //     color: Colors.white,
+                            //     fontSize: 18,
+                            //     fontWeight: FontWeight.bold,
+                            //     fontFamily: 'Calibri',
+                            //   ),
+                            // ),
+                            const SizedBox(height: 4),
+                            GestureDetector(
+                              onTap: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => LogoutScreen(),
+                                  ),
+                                );
+                              },
+                              child: const Text(
+                                'Update profile',
+                                style: TextStyle(
+                                  color: Colors.blueAccent,
+                                  fontSize: 14,
+                                  decoration: TextDecoration.underline,
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+
+                      // Optional: Chevron or detail arrow (like original onDetailsPressed)
+                      IconButton(
+                        icon: const Icon(
+                          Icons.arrow_forward_ios,
+                          size: 16,
+                          color: Colors.white,
+                        ),
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => LogoutScreen(),
+                            ),
+                          );
+                        },
+                      ),
+                    ],
+                  ),
                 ),
-                // Padding(
-                //   padding: const EdgeInsets.symmetric(
-                //     horizontal: 16,
-                //     vertical: 8,
-                //   ),
-                //   child: Row(
-                //     children: [
-                //       const Icon(
-                //         Icons.visibility,
-                //         color: Colors.white,
-                //         size: 18,
-                //       ),
-                //       const SizedBox(width: 8),
-                //       const Text(
-                //         'Actively searching conferences',
-                //         style: TextStyle(color: Colors.white, fontSize: 14),
-                //       ),
-                //       const Spacer(),
-                //       IconButton(
-                //         icon: const Icon(Icons.edit, color: Colors.blueAccent),
-                //         onPressed: () {
-                //           Navigator.pop(context); // Close drawer first
-                //           Navigator.push(
-                //             context,
-                //             MaterialPageRoute(
-                //               builder: (context) => EditStatusScreen(
-                //                 currentStatus: 'Actively searching conferences',
-                //               ),
-                //             ),
-                //           );
-                //         },
-                //         tooltip: 'Edit status',
-                //       ),
-                //     ],
-                //   ),
-                // ),
-                // const Divider(color: Colors.grey, thickness: 1),
-                // Conference-specific drawer items with navigation
+
+                // Drawer Items
                 _buildDrawerItem(
                   Icons.search,
                   'Search Conferences',
@@ -1102,6 +1394,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                 ),
                 const Divider(color: Colors.grey, thickness: 1),
+
                 _buildDrawerItem(
                   Icons.calendar_today,
                   'Upcoming Conferences',
@@ -1129,6 +1422,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                 ),
                 const Divider(color: Colors.grey, thickness: 1),
+
                 _buildDrawerItem(
                   Icons.visibility,
                   'Display preferences',
@@ -1169,7 +1463,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   'Conference News',
                   onTap: () => Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => AssessmentScreen()),
+                    MaterialPageRoute(builder: (context) => DocumentsScreen()),
                   ),
                 ),
                 _buildDrawerItem(
@@ -1197,13 +1491,25 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                 ),
                 _buildDrawerItem(
-                  Icons.schedule,
+                  Icons.info_outline,
                   'About Us',
                   onTap: () => Navigator.push(
                     context,
                     MaterialPageRoute(builder: (context) => ContactUsScreen()),
                   ),
                 ),
+
+                // Profile Option
+                _buildDrawerItem(
+                  Icons.person_outline,
+                  'Profile',
+                  onTap: () => Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => LogoutScreen()),
+                  ),
+                ),
+
+                // Version Info (only once)
                 const Padding(
                   padding: EdgeInsets.only(
                     left: 16,
@@ -1216,9 +1522,10 @@ class _HomeScreenState extends State<HomeScreen> {
                     style: TextStyle(color: Colors.grey, fontSize: 12),
                   ),
                 ),
-                //=============================logout option=========================
+
                 const Divider(color: Colors.grey, thickness: 1),
 
+                // // Logout Option
                 // _buildDrawerItem(
                 //   Icons.exit_to_app,
                 //   'Logout',
@@ -1228,26 +1535,6 @@ class _HomeScreenState extends State<HomeScreen> {
                 //     _showLogoutConfirmationDialog(context);
                 //   },
                 // ),
-                _buildDrawerItem(
-                  Icons.person_outline,
-                  'Profile',
-                  onTap: () => Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => LogoutScreen()),
-                  ),
-                ),
-                const Padding(
-                  padding: EdgeInsets.only(
-                    left: 16,
-                    right: 16,
-                    top: 16,
-                    bottom: 8,
-                  ),
-                  child: Text(
-                    'Version 20.57',
-                    style: TextStyle(color: Colors.grey, fontSize: 12),
-                  ),
-                ),
               ],
             );
           } else if (snapshot.hasError) {
